@@ -1,0 +1,4 @@
+- Move images to more appropriate file hosting site
+- Update Projects pages
+- Remove unnecessary Google Firebase and class related stuff
+- Add animations, make everything look better
