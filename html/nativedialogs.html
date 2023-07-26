@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7701N60BR"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R7701N60BR');
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Kaiwen Tsou">  
+     <!-- Referenced example from https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag -->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kaiwen Tsou Software Developer Portfolio Simple Dialogues</title>
+    <!-- <link href="../main.css" rel="stylesheet"> -->
+    <!-- <script type="text/javascript" src="../js/purify.min.js"></script> -->
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js" integrity="sha512-DJjvM/U3zCRpzrYboJgg23iLHapWcS2rlo7Ni18Cdv+FMs6b3gUF7hQihztj4uVkHHfUwk7dha97jVzRqUJ7hg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    <header>
+        <h1>Simple Dialogs</h1>
+        <a href="../index.html">Back to my Portfolio</a>
+    </header>
+    <main>
+        <button id="alert">Alert</button>
+        <hr>
+        <button id="confirm" type="submit">Confirm</button>
+        <output id="result_confirm">Confirmed?</output>
+
+        <hr>
+        <button id="prompt" type="submit">Prompt</button>
+        <output id="result_prompt"></output>
+        <hr>
+        <button id="safer_prompt" type="submit">Safer Prompt</button>
+        <output id="result_safer_prompt"></output>
+
+    </main>
+
+    <script>
+        const alertButton = document.getElementById('alert');
+        const confirmButton = document.getElementById('confirm');
+        const promptButton = document.getElementById('prompt');
+        const saferPromptButton = document.getElementById('safer_prompt');
+
+
+        function alertMe() {
+            alert("alert!");
+        };
+
+        alertButton.addEventListener('click', alertMe);
+
+        confirmButton.addEventListener('click', () => {
+            document.getElementById('result_confirm').innerText = "Confirmed: " + confirm("Confirm?");
+        });
+
+        promptButton.addEventListener('click', () => {
+            let unsafeText = prompt("Enter your text: ", "Nothing entered");
+            //using innerText prevents the obvious html injection
+                        //break with <b onmouseover="alert('Did')">Mouse Over</b>
+            //document.getElementById('result_prompt').innerHTML = "User Inputted: " + unsafeText; 
+            document.getElementById('result_prompt').innerHTML = `User Inputted: ${unsafeText}`;
+        });
+
+        saferPromptButton.addEventListener('click', () => {
+            document.getElementById('result_safer_prompt').innerHTML = "User Inputted: " + safeText;
+        });
+
+        //let clean = ("as");
+
+    </script> 
+
+</body>

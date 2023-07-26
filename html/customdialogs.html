@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7701N60BR"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R7701N60BR');
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Kaiwen Tsou">  
+     <!-- Referenced example from https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag -->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kaiwen Tsou Software Developer Portfolio Simple Dialogues</title>
+    <!-- <link href="../main.css" rel="stylesheet"> -->
+    <!-- <script type="text/javascript" src="../js/purify.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js" integrity="sha512-DJjvM/U3zCRpzrYboJgg23iLHapWcS2rlo7Ni18Cdv+FMs6b3gUF7hQihztj4uVkHHfUwk7dha97jVzRqUJ7hg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="../js/customdialog.js"></script>
+    
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Custom Dialogs</h1>
+        <a href="../index.html">Back to my Portfolio</a>
+    </header>
+    <main>
+        <button id="alert">Alert</button>
+        <hr>
+        <button id="confirm" type="submit">Confirm</button>
+        <output id="result_confirm">Confirmed?</output>
+
+        <hr>
+        <button id="prompt" type="submit">Prompt</button>
+        <output id="result_prompt"></output>
+    </main>
+
+    <template id="custom_dialog_box">
+        <dialog open>
+            <!-- Based on MDN HTML Layout https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog -->
+            <!-- Form automatically closes on pressing a button with dialog method -->
+            <form method="dialog">
+                <!-- Title/Info -->
+                <p><label>Favorite animal:
+                </label></p>
+
+                <input type="text">
+
+                <menu>
+                    <button id="confirm" value="default" type="submit">Confirm</button>
+                    <!-- cancel (for confirm/prompt) -->
+                    <button id="cancel" type="submit">Cancel</button>
+                </menu>
+            </form>
+        </dialog>
+      </template>
+
+    <script type="module">
+        const alertButton = document.getElementById('alert');
+        const confirmButton = document.getElementById('confirm');
+        const promptButton = document.getElementById('prompt');
+
+
+
+        import {myAlert, myConfirm, myPrompt} from '../js/customdialog.js';
+        
+        alertButton.addEventListener('click', ( (event) => {
+            console.log(myAlert('#custom_dialog_box'));
+        }));
+
+        confirmButton.addEventListener('click', () => {
+            myConfirm("#custom_dialog_box", isConfirmed);
+        });
+
+        promptButton.addEventListener('click', () => {
+            myPrompt("#custom_dialog_box", promptResult);
+        });
+
+        function isConfirmed(myBool) {
+            document.getElementById('result_confirm').innerText = "Confirmed: " + myBool;
+        }
+
+        function promptResult(unsafeText) {
+            //Might have been smarter sanitize earlier, since this passes unsanitized text into some functions
+            //But it's sanitized before it hits DOM, so it should be fine
+            let safeText = DOMPurify.sanitize(unsafeText);
+            document.getElementById('result_prompt').innerHTML = `User Inputted: ${safeText}`;
+        }
+
+    </script> 
+
+</body>

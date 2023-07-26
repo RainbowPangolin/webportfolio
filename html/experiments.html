@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Kaiwen Tsou">  
+     <!-- Referenced example from https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag -->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kaiwen Tsou Software Developer Portfolio Experiments</title>
+    <script>
+        window.addEventListener('load', function() {
+            let canvas = document.getElementById('canvas');
+            let context = canvas.getContext('2d');
+            context.strokeStyle = 'blue';
+            context.strokeRect(1,1,100,100);
+        });
+    </script>
+    <link href="../css/main.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="../index.html">Back to my Portfolio</a>
+    </header>
+    <hr>
+    <main>
+        <section id="the-first-meme" class="container">
+            <h2>Here's a meme</h2>
+            <details>
+                <summary>This is one of my favorite memes</summary>
+                <p>The meme.</p>
+            </details>
+        </section>
+        <section id="Tic-Tac-Toe" class="experiments container" >
+            <h2>Let's play Tic-Tac-Toe (this is a WIP)</h2>
+            <table>
+                <caption id="nextturn">Next Turn:</caption>
+                <colgroup>
+                    <col span="4" class="toe-columns">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th scope="col">C1</th>
+                        <th scope="col">C2</th>
+                        <th scope="col">C3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">R1</th>
+                        <td>X</td>
+                        <td>O</td>
+                        <td>X</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">R2</th>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>O</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">R3</th>
+                        <td>O</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                </table>
+                <template id="nextturnicon">
+                    <div>O</div>
+                </template>
+        </section>
+        <section id="the-canvas" class="container">
+            <h2>Here are some elementary shapes</h2>
+            <canvas id="canvas" width = 120 height = 120>
+                <strong>Browser does not support Canvas</strong>
+            </canvas>
+            <svg viewBox="0 0 1000 100"  stroke="red" fill="grey">
+                <circle cx="50" cy="50" r="40" />
+            </svg>
+        </section>
+        <section id="the-videos" class="container">
+            <h2>Watch some videos if you want</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VBJ1M-CjSY8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>Here's another video, in case the above one doesn't show</p>
+            <video src="https://www.htmlref.com/ch2/html_5.mp4" controls>Turns out you can't see this either :(</video>
+            <!-- Oh no, this is cringe -->
+            <div id="memes">This is a <span id="the-meme">weme</span> .</div>    
+        </section>
+        <section id="miscellaneous" class="container">
+            <h2>Miscellaneous</h2>
+            <p>
+                This is a poem <br>
+                <code>Of known length</code> <br>
+                Until now, <br>
+                Because I <i>have</i> finished <br>
+                Writing <b>it.</b> <br>
+            </p>
+            <pre> 
+                This is a similar poem
+                But the main difference
+                Is that this one
+                Unlike the last one
+                Uses different tags
+            </pre> 
+    
+            <picture>
+                <source srcset="/media/cc0-images/surfer-240-200.jpg"
+                        media="(min-width: 800px)">
+                <img src="/media/cc0-images/painted-hand-298-332.jpg" alt="" />
+            </picture>
+            <p>Please play the audio file to hear a sound from the aetrnaaberrateFujiwara v3 osu! skin by Merami</p>
+            <audio id="osusound" controls>
+                <source src="/media/spinnerspin.mp3">
+            </audio>
+    
+            <label for="meme">Choose a meme:</label>
+                <select name="meme" id="meme">
+                    <optgroup label="Uncanny Memes">
+                        <option value="mr-incredible">Mr. Incredible</option>
+                        <option value="backrooms">Backrooms</option>
+                    </optgroup>
+                    <optgroup label="Look Pim">
+                        <option value="evangelion">Evangelion Themed</option>
+                        <option value="spongebob">Spongebob Themed</option>
+                    </optgroup>
+                </select>
+            <label for="favorite-meme">Or enter your own</label>
+            <input list="favorite-memes" name="favorite-meme" id="favorite-meme"/>
+            <datalist id="favorite-memes">
+                <option value="invincible">
+                <option value="roblox">
+                <option value="Dr. Mario">
+                <option value="Kirbo">
+            </datalist>
+        </section>
+    </main>
+</body>

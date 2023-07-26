@@ -1,0 +1,269 @@
+/* Sitewide props */
+
+/* import a Google font */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+/* Set my standard color palette */
+:root{
+    --light-background-blue: rgb(8, 192, 253);
+    --dark-background-blue: rgb(28, 60, 97);
+    --highlight-blue: rgb(53, 111, 145);
+    --alt-gray: #dfdfdfdf;
+}
+* {
+    font-family: "Ubuntu", Lato, sans-serif;
+}
+main {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+main > section{
+    padding: 3vh;
+}
+h1, h2, h3, h4, p{
+    text-align: center;
+}
+main > .container:nth-child(even) {
+    background: var(--alt-gray);
+}
+header:not(.top-header){
+    display: flex;
+    justify-content: center;
+}
+.stacked-boxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vh;
+}
+.stacked-boxes > section, .stacked-boxes > .box {
+    max-width: 400px;
+    padding: 0rem 2rem 1rem 2rem;
+    border: .1rem solid;
+    border-radius: 1em;
+}
+
+#education-list > section{
+    max-width: 800px;
+}
+ul {
+    list-style: square;
+    margin: 0px .5rem 0px 0px;
+}
+#social-icons, #navigation{
+    list-style: none;
+}
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+figure figcaption{
+    text-align: center;
+}
+
+
+/* Navbar specific properties */
+/* Sticky Navbar referenced from https://gomakethings.com/how-to-create-a-sticky-navigation-with-only-css/ */
+#navbar {
+    position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+#navigation {
+    display: flex;
+    padding: 10px;
+    flex-flow: row wrap;
+    max-block-size: 50rem;
+    justify-content: center;
+    background: var(--dark-background-blue);
+    flex-shrink: 0; 
+}
+#navigation a {
+    text-decoration: none;
+    padding: 0.5rem;
+    color: white;
+    border: 1px solid;
+    transition: background 0.5s ease-out;
+}
+#navigation a:hover {
+    text-decoration: none;
+    background: var(--highlight-blue);
+}
+
+#navbar > ul {
+    padding: 15px;
+}
+
+/* Splash Screen Props and Animations */
+.top-header{
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(91,136,149,1) 0%, rgba(5,103,163,1) 100%);    padding: 5em 0em 5em 0em;
+    display: flex;
+    flex-flow: column;
+    color: white;
+    animation-duration: 3s;
+    animation-name: fadein;
+}
+@keyframes fadein {
+    from {
+        color: rgba(255, 255, 255, 0);
+    }
+    to {
+        color: white;
+    }
+}
+.top-header > h1{
+    animation-duration: 3s;
+    animation-name: fallin;
+    position:relative;
+}
+@keyframes fallin {
+    from {
+        top:-4rem; 
+    }
+    to {
+        top:0rem; 
+    }
+}
+.top-header > h2{
+    animation-duration: 3s;
+    animation-name: rightin;
+    position:relative;
+}
+@keyframes rightin {
+    from {
+        left:8rem;
+    }
+    to {
+        left:0rem;
+    }
+}
+
+
+/* About Me specific props */
+/* Referenced example from https://css-tricks.com/snippets/css/complete-guide-grid/ */
+#about-professional ul li{
+    float: left;
+}
+#about-container > img {
+    grid-area: my-portrait;
+}
+#about-container > header {
+    grid-area: header;
+}
+#about-container > h3 {
+    grid-area: name;
+    justify-self: left;
+}
+#about-casual{
+    grid-area: casual;
+}
+#about-professional{
+    grid-area: professional;
+}
+#about-container{
+    display: grid;
+    column-gap: 4%;
+    grid-template-rows: auto;
+}
+
+/* Contact Form properties */
+fieldset {
+    background-color: var(--alt-gray);
+    border: none;
+}
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 0.5rem 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+}
+#contact-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+button {
+    padding: 3% 8% 3% 8%;
+    border: none;
+    transition: background-color 0.5s;
+}
+button:hover {
+    background-color: lightblue;
+}
+
+
+/* Footer Specific */
+footer{
+    display: flex;
+    justify-content: center;
+}
+
+/* Header Specific */
+header {
+    display: flex;
+    justify-content: center;
+}
+
+/* Media Queries for Responsive Design */
+/* Large screens */
+@media only screen and (min-width: 800px){ 
+    .stacked-boxes{
+        flex-flow: row wrap;
+        align-items: flex-start;
+    }
+    #about-container{
+        max-width: 60vw;
+        margin: auto;
+        grid-template-areas: 
+        "header header header "
+        "my-portrait name ."
+        "my-portrait professional casual"
+    }
+    #about-container > h3 {
+        grid-area: name;
+        justify-self: left;
+    }
+
+    #navigation {
+        flex-flow: row wrap;
+    }
+}
+/* Small screens/mobile */
+@media only screen and (max-width: 800px){
+    .stacked-boxes{
+        flex-flow: column;
+        align-items: center;
+    }
+    #about-container{
+        max-width: 60vw;
+        margin: auto;
+        grid-template-areas: 
+        "header "
+        "my-portrait  "
+        "name "
+        "professional "
+        "casual";
+        justify-items: center;
+    }
+    #about-container > h3 {
+        justify-self: center;
+    }
+    #navigation {
+        gap: 1.2rem;
+    }
+}
+
+/* Misc Animations and Transforms */
+#social-icons > li {
+    padding: 2%;
+    transition: transform 0.5s;
+}
+#social-icons > li:hover {
+    transform: scale(1.2);
+}

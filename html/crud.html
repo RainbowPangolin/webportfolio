@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7701N60BR"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R7701N60BR');
+    </script>
+    <!-- Employers are probably unlikely to be using old IE to view my portfolio site, but I don't see a reason to not include the compatibility tags yet-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Kaiwen Tsou">
+    <!-- Referenced example from https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kaiwen Tsou Software Developer Portfolio</title>
+
+    <script type="module" src="../js/blog.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js" integrity="sha512-DJjvM/U3zCRpzrYboJgg23iLHapWcS2rlo7Ni18Cdv+FMs6b3gUF7hQihztj4uVkHHfUwk7dha97jVzRqUJ7hg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <header class="top-header">
+        <h1>My Blog Posts</h1>
+        <a href="../index.html">Back to my Portfolio</a>
+    </header>
+    <main>
+        <button id="add_blog_post_button" type="submit">Add Blog Post</button>
+        <output id="result_prompt"></output>
+    </main>
+
+    <!-- Based on MDN example: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
+    <table id="blog_posts">
+        <thead>
+          <tr>
+            <td>Post Date</td>
+            <td>Last Updated</td>
+            <td>Post Title</td>
+            <td>Post Summary</td>
+          </tr>
+        </thead>
+        <tbody id="blog_post_entries">     
+        </tbody>
+      </table>
+      
+      <!--  -->
+      <template id="add_blog_post">
+        <tr>
+            <td class="date">TEMPLATE</td>
+            <td class="last_updated">TEMPLATE</td>
+            <td class="title">TEMPLATE</td>
+            <td class="summary">TEMPLATE</td>
+            <td class="id hidden">TEMPLATE</td>
+            <td class="edit_button"><button>Edit</button></td>
+            <td class="delete_button"><button>Delete</button></td>
+        </tr>
+      </template>
+
+    <template id="blog_entry_dialog">
+        <dialog open>
+            <!-- Based on MDN HTML Layout https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog -->
+            <!-- Form automatically closes on pressing a button with dialog method -->
+            <form method="dialog">
+                <!-- Title/Info -->
+                <p><label><h2>Create Blog Post</h2>
+                </label></p>
+                <label>Post Date:
+                    <h3 id="post_date">Date</h3>
+                </label>
+                <label class="edit hidden">Last Updated:
+                    <h3 id="post_updated_date" class="edit hidden">Date</h3>
+                </label>
+
+                <label>Post Title:
+                    <input id="input_title" type="text"></label>
+
+                <label>Post Summary:
+                    <input id="input_summary" type="text"></label>
+
+                <!-- <label>Post Date:
+                    <input id="input_date" type="text"></label> -->
+
+                <menu>
+                    <button id="confirm" value="default" type="submit">Confirm</button>
+                    <!-- cancel (for confirm/prompt) -->
+                    <button id="cancel" type="submit">Cancel</button>
+                </menu>
+            </form>
+        </dialog>
+    </template>
+
+    <footer>
+        <p>© 2022 Kaiwen Tsou</p>
+    </footer>
+</body>
